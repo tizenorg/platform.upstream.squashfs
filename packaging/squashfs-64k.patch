@@ -1,0 +1,24 @@
+--- squashfs-tools/mksquashfs.c.orig	2011-11-03 19:57:06.000000000 +0100
++++ squashfs-tools/mksquashfs.c	2011-11-03 19:58:50.000000000 +0100
+@@ -4871,7 +4871,7 @@
+ 			ERROR("-force-uid uid\t\tset all file uids to uid\n");
+ 			ERROR("-force-gid gid\t\tset all file gids to gid\n");
+ 			ERROR("-nopad\t\t\tdo not pad filesystem to a multiple "
+-				"of 4K\n");
++				"of 64K\n");
+ 			ERROR("-keep-as-directory\tif one source directory is "
+ 				"specified, create a root\n");
+ 			ERROR("\t\t\tdirectory containing that directory, "
+@@ -5339,9 +5339,9 @@
+ 	SQUASHFS_INSWAP_SUPER_BLOCK(&sBlk); 
+ 	write_destination(fd, SQUASHFS_START, sizeof(sBlk), &sBlk);
+ 
+-	if(!nopad && (i = bytes & (4096 - 1))) {
+-		char temp[4096] = {0};
+-		write_destination(fd, bytes, 4096 - i, temp);
++	if(!nopad && (i = bytes & (65536 - 1))) {
++		char temp[65536] = {0};
++		write_destination(fd, bytes, 65536 - i, temp);
+ 	}
+ 
+ 	close(fd);
