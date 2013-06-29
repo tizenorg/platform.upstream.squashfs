@@ -6,6 +6,7 @@ Summary:        A Read-Only File System with Efficient Compression
 Url:            http://squashfs.sourceforge.net/
 Group:          System/Filesystems
 Source0:        %{name}%{version}.tar.gz
+Source1001: 	squashfs.manifest
 BuildRequires:  attr-devel
 BuildRequires:  lzma-devel
 BuildRequires:  lzo-devel
@@ -19,6 +20,7 @@ squashfs images.
 
 %prep
 %setup -n squashfs%{version}
+cp %{SOURCE1001} .
 
 %build
 sed -i -e "s#-O2#%{optflags}#g" squashfs-tools/Makefile
@@ -29,6 +31,7 @@ mkdir -p %{buildroot}/usr/bin
 install -m 755 squashfs-tools/{un,mk}squashfs %{buildroot}/usr/bin
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %license COPYING
 /usr/bin/*squashfs
