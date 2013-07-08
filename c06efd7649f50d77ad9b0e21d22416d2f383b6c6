@@ -1,0 +1,8 @@
+Change-Id: Ic06efd7649f50d77ad9b0e21d22416d2f383b6c6
+Code-Review+2: Ryan Ware <ware@linux.intel.com>
+Verified+1: Ryan Ware <ware@linux.intel.com>
+Submitted-by: Ryan Ware <ware@linux.intel.com>
+Submitted-at: Mon, 08 Jul 2013 09:39:10 -0700
+Reviewed-on: https://review.tizen.org/gerrit/4931
+Project: platform/upstream/squashfs
+Branch: refs/heads/tizen
